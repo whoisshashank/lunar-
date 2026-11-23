@@ -87,9 +87,9 @@ if (Number.isInteger(moonImageryAssetId) && moonImageryAssetId > 0) {
 }
 
 
-// ==========================================
-// LUNAR ICE EXPLORER — TARGET CRATERS v1
-// ==========================================
+
+// LUNAR ICE EXPLORER TARGET CRATERS 
+
 
 const lunarIceTargets = [
   {
@@ -183,16 +183,16 @@ addToolbarButton("Show Both Targets", function () {
 console.log("Lunar Ice Explorer: target locations added.");
 
 
-// ==========================================
-//  LAYER VISIBILITY CONTROLS
-// ==========================================
 
-// Find the two target entities created in Step 1
+//  LAYER VISIBILITY CONTROLS
+
+
+
 const targetEntities = lunarIceTargets.map((target) =>
   viewer.entities.getById(`lunar-ice-${target.id}`)
 );
 
-// Helper: toggle a graphic on both target entities
+
 function setTargetLayerVisibility(graphicType, visible) {
   targetEntities.forEach((entity) => {
     if (entity && entity[graphicType]) {
@@ -203,7 +203,7 @@ function setTargetLayerVisibility(graphicType, visible) {
   viewer.scene.requestRender();
 }
 
-// Toggle target points
+
 addToggleButton(
   "Target points",
   true,
@@ -212,7 +212,7 @@ addToggleButton(
   }
 );
 
-// Toggle target labels
+
 addToggleButton(
   "Target labels",
   true,
@@ -224,9 +224,9 @@ addToggleButton(
 console.log("Lunar Ice Explorer: layer controls initialized.");
 
 
- // ==========================================
- // STEP 3 — CRATER INFO PANEL WITH CLOSE BUTTON
- // ==========================================
+ 
+ 
+ 
 
 const lunarIceInfoPanel = document.createElement("div");
 
@@ -247,7 +247,7 @@ lunarIceInfoPanel.style.cssText = `
   box-shadow: 0 3px 12px rgba(0,0,0,0.5);
 `;
 
-// Panel content
+
 lunarIceInfoPanel.innerHTML = `
   <button id="ice-close-panel"
     title="Close information panel"
@@ -286,10 +286,10 @@ lunarIceInfoPanel.innerHTML = `
   </div>
 `;
 
-// Add panel to Cesium viewer
+
 viewer.container.appendChild(lunarIceInfoPanel);
 
-// Reopen button
+ 
 const lunarIceReopenButton = document.createElement("button");
 
 lunarIceReopenButton.id = "ice-reopen-panel";
@@ -311,19 +311,19 @@ lunarIceReopenButton.style.cssText = `
 
 viewer.container.appendChild(lunarIceReopenButton);
 
-// Close panel
+
 document.getElementById("ice-close-panel").onclick = function () {
   lunarIceInfoPanel.style.display = "none";
   lunarIceReopenButton.style.display = "block";
 };
 
-// Reopen panel
+
 lunarIceReopenButton.onclick = function () {
   lunarIceInfoPanel.style.display = "block";
   lunarIceReopenButton.style.display = "none";
 };
 
-// Display selected target information
+
 function showLunarIceTargetInfo(target) {
   const details = document.getElementById("ice-target-details");
 
@@ -350,7 +350,7 @@ function showLunarIceTargetInfo(target) {
   };
 }
 
-// Target selection
+
 document.getElementById("ice-target-1").onclick = function () {
   showLunarIceTargetInfo(lunarIceTargets[0]);
 };
@@ -359,13 +359,13 @@ document.getElementById("ice-target-2").onclick = function () {
   showLunarIceTargetInfo(lunarIceTargets[1]);
 };
 
-// Default target
+
 showLunarIceTargetInfo(lunarIceTargets[0]);
 
 console.log("Lunar Ice Explorer: closable information panel initialized.");
 
 
-// Add Moon Terrain 3D Tiles
+
 try {
   const tileset1 = await Cesium.Cesium3DTileset.fromIonAssetId(moonTilesAssetId, {
     // Allow clamp to 3D Tiles
