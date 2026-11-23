@@ -3,7 +3,7 @@ import * as Cesium from "cesium";
 import "./style.css";
 import "cesium/Build/Cesium/Widgets/widgets.css";
 
-// Set the ellipsoid to be the moon before creating the viewer
+
 Cesium.Ellipsoid.default = Cesium.Ellipsoid.MOON;
 
 const ionAccessToken = import.meta.env.VITE_CESIUM_ION_ACCESS_TOKEN?.trim();
@@ -108,7 +108,7 @@ const lunarIceTargets = [
   },
 ];
 
-// Add a visible locator for each target
+
 for (const target of lunarIceTargets) {
   viewer.entities.add({
     id: `lunar-ice-${target.id}`,
@@ -138,7 +138,7 @@ for (const target of lunarIceTargets) {
   });
 }
 
-// Reusable camera navigation function
+
 function flyToLunarIceTarget(target) {
   viewer.camera.flyTo({
     destination: Cesium.Cartesian3.fromDegrees(
@@ -155,7 +155,7 @@ function flyToLunarIceTarget(target) {
   });
 }
 
-// Add navigation buttons to the local toolbar
+
 addToolbarButton("Ibn Bajja PSR", function () {
   flyToLunarIceTarget(lunarIceTargets[0]);
 });
@@ -184,7 +184,7 @@ console.log("Lunar Ice Explorer: target locations added.");
 
 
 
-//  LAYER VISIBILITY CONTROLS
+
 
 
 
